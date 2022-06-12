@@ -49,8 +49,12 @@
     font-family: 'sw-medium';
     color: #000000;
     text-shadow: 2px 0 0 rgba(255, 255, 255, 0.364), -2px 0 0 rgba(255, 255, 255, 0.392), 0 2px 0 rgba(255, 255, 255, 0.398), 0 -2px 0 rgba(255, 255, 255, 0.358), 1px 1px rgba(255, 255, 255, 0.415), -1px -1px 0 rgba(255, 255, 255, 0.307), 1px -1px 0 rgba(255, 255, 255, 0.37), -1px 1px 0 rgba(255, 255, 255, 0.387);
+    padding-left: 7px;
 }
-
+.spanArtistName{
+    color: #1a1a1a;
+    padding-left: 7px;
+}
 
 
 
