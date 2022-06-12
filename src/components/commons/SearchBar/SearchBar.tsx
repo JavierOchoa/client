@@ -14,10 +14,11 @@ const SearchBar = ()=>{
     const [input, setInput] = useState<string>('');
     const dispatch = useDispatch();
     const {searchAll} = bindActionCreators(actionCreator,dispatch)
-    function handleChange({target}: {target: any}): void {
-        searchAll(target.value)
-        console.log(target.value)
-        setInput(()=>{return target.value;}) 
+    function handleChange(e:any): void {
+        e.preventDefault();
+        searchAll(e.target.value)
+        console.log(e.target.value)
+        setInput(()=>{return e.target.value;}) 
     }
 
     return (

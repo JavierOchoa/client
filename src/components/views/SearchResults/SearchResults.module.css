@@ -32,3 +32,13 @@
     width: 85vw;
     height: 95vh;
 }
+.divContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.divText{
+    width: 60vw;
+    display: flex;
+    padding: 5px;
+}

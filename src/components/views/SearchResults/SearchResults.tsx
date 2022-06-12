@@ -13,13 +13,18 @@ const SearchResults = () => {
   const { songData, artistData, albumData} = useSelector((state: any) => state.searchResults)
   console.log(songData)
   return (
-    <div>
-
+    <div className={s.divContainer}>
+      {
+        (songData.length<1 && artistData.length<1 && albumData.length<1) &&
+        <div className={s.sectionTitle}>No Results Found.</div>
+      }
       {
         songData.length>0 &&
-        <Link className={s.links} to={'/moreinfotracks'}>
-          <div className={s.sectionTitle}>{`Tracks >`}</div>
-        </Link>
+        <div className={s.divText}>
+          <Link className={s.links} to={'/moreinfotracks'}>
+            <div className={s.sectionTitle}>{`Tracks >`}</div>
+          </Link>
+        </div>
       }
 
       {
@@ -29,9 +34,11 @@ const SearchResults = () => {
       }
       {
         artistData.length>0 &&
-        <Link className={s.links} to={'/moreinfoartists'}>
-          <div className={s.sectionTitle}>{`Artists >`}</div>
-        </Link>
+        <div className={s.divText}>
+          <Link className={s.links} to={'/moreinfoartists'}>
+            <div className={s.sectionTitle}>{`Artists >`}</div>
+          </Link>
+        </div>
       }
       {
         artistData.slice(0, 4).map((artist: any) => {
@@ -40,9 +47,11 @@ const SearchResults = () => {
       }
       {
         albumData.length>0 &&
-        <Link className={s.links} to={'/moreinfoalbums'}>
-          <div className={s.sectionTitle}>{`Albums >`}</div>
-        </Link>
+        <div className={s.divText}>
+          <Link className={s.links} to={'/moreinfoalbums'}>
+            <div className={s.sectionTitle}>{`Albums >`}</div>
+          </Link>
+        </div>
       }
       {
         albumData.slice(0, 4).map((albums: any) => {
