@@ -74,7 +74,7 @@ export const addToQueue = (data: swSong) => {
 };
 export const addToPlaylist = (playlistId: string, songId: string) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.post('http://localhost:3001/add', {playlistId: playlistId, songId: songId})
+    axios.post('http://localhost:3001/paylitst/add', {playlistId: playlistId, songId: songId})
     .then(response => dispatch({
       type: ActionType.ADD_TO_PLAYLIST,
       payload: response.data
