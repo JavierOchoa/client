@@ -39,19 +39,19 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
   const userId: string | undefined = user?.sub?.slice(6);
   let tipo = props.item.type
 
-  const state= useSelector((state:any)=>state)
+  const state = useSelector((state: any) => state)
 
-  const [estado,setEstado]=useState<any>()
+  const [estado, setEstado] = useState<any>()
   const { getLibrary } = bindActionCreators(actionCreatorUser, dispatch);
 
 
-  useEffect(()=>{
+  useEffect(() => {
     getLibrary(user?.email)
-    
 
 
-    state.library_artist.list.liked_songs && setEstado(state.library_artist.list.liked_songs.map((e:any)=> e.dz_Id ))
-  },[])
+
+    state.library_artist.list.liked_songs && setEstado(state.library_artist.list.liked_songs.map((e: any) => e.dz_Id))
+  }, [])
 
 
 
@@ -63,24 +63,24 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
       return (
         <div className={s.itemListContainer}>
           {/* <Link className={s.links} to={'/song/:id'}> */}
-            <div className={s.imageAndNameContainer}>
-              <div>
+          <div className={s.imageAndNameContainer}>
+            <div>
 
-                <div ><img className={s.image} src={props.item.image_small} alt="" /><img src={play} className={s.Play} /> </div>
+              <div ><img className={s.image} src={props.item.image_small} alt="" /><img src={play} className={s.Play} /> </div>
 
-              </div>
-              <div>
-                <div onClick={() => playSong(props.item)} className={s.songName}>{props.item.name}</div>
-                <span className={s.spanArtistName}>{props.item.name}</span> 
-              </div>
             </div>
+            <div>
+              <div onClick={() => playSong(props.item)} className={s.songName}>{props.item.name}</div>
+              <span className={s.spanArtistName}>{props.item.name}</span>
+            </div>
+          </div>
           {/* </Link> */}
 
 
           <div className={s.controllerContainer}>
-            {userId && <button className={s.likeBtn} onClick={() => likeSong(props.item.dz_Id, user?.email)}><p className={estado?.includes(props.item.dz_Id) ? s.likeImgInclude:s.likeImg}     >♥</p></button>}
+            {user?.email && <button className={s.likeBtn} onClick={() => likeSong(props.item.dz_Id, user?.email)}><p className={estado?.includes(props.item.dz_Id) ? s.likeImgInclude : s.likeImg}     >♥</p></button>}
             <div>
-              <DropDownButton item={props.item}/>
+              <DropDownButton item={props.item} />
             </div>
             <div>
               <div className={s.duration}>{formatDuration(props.item.duration)}</div>

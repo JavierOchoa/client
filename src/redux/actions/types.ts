@@ -1,11 +1,11 @@
 import { LibraryArtist } from "../reducer/types";
 
 
-export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery;
+export type Actions = getUser | GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery;
 
 
 
-export enum ActionType{
+export enum ActionType {
   CLEAN_GENRE = 'CLEAN_GENRE',
   GET_GENRE = 'GET_GENRE',
   GET_GENRES = 'GET_GENRES',
@@ -25,91 +25,96 @@ export enum ActionType{
   NEW_PLAYLIST = 'NEW_PLAYLIST',
   UPDATE_USER = 'UPDATE_USER',
   GET_TOP = 'GET_TOP',
-  LIKE_SONG= 'LIKE_SONG',
-  SET_QUERY = 'SET_QUERY'
+  LIKE_SONG = 'LIKE_SONG',
+  SET_QUERY = 'SET_QUERY',
+  GET_USER = 'GET_USER'
 }
 
 
-export interface userOption{ //opciones del componente AdminPanel
-  home:boolean,
-  user:boolean
+export interface userOption { //opciones del componente AdminPanel
+  home: boolean,
+  user: boolean
 }
-interface CleanGenre{
+interface CleanGenre {
   type: ActionType.CLEAN_GENRE;
 }
-interface GetGenre{
+interface GetGenre {
   type: ActionType.GET_GENRE;
   payload?: any
 }
-interface GetGenres{
+interface GetGenres {
   type: ActionType.GET_GENRES;
   payload?: swGenre[]
 }
-interface GetChart{
-  type:ActionType.GET_CHART;
+interface GetChart {
+  type: ActionType.GET_CHART;
   payload?: swSong[]
 }
-interface GetLastSongs{
-  type:ActionType.GET_LAST_SONGS;
+interface GetLastSongs {
+  type: ActionType.GET_LAST_SONGS;
   payload?: swSong[]
 }
-interface GetAlbumPlaylist{
-  type:ActionType.GET_ALBUM_PLAYLIST;
+interface GetAlbumPlaylist {
+  type: ActionType.GET_ALBUM_PLAYLIST;
   payload: swAlbum[]
 }
-interface ChangeAdminOption{
+interface ChangeAdminOption {
   type: ActionType.CHANGE_ADMIN_OPTION;
-  payload?: any 
+  payload?: any
 }
-interface PostSignUp{
+interface PostSignUp {
   type: ActionType.POST_SIGN_UP,
-  payload:any
+  payload: any
 }
-interface PostLogin{
+interface PostLogin {
   type: ActionType.POST_LOGIN,
-  payload:any
+  payload: any
 }
-interface SearchAll{
+interface SearchAll {
   type: ActionType.SEARCH_ALL,
-  payload: {data: Object, query: string}
+  payload: { data: Object, query: string }
 }
-interface SendPrevPlay{
+interface SendPrevPlay {
   type: ActionType.SEND_PREV_PLAY,
   payload: object
 }
-interface PlaySong{
+interface PlaySong {
   type: ActionType.PLAY_SONG
   payload: swSong
 }
-interface AddToQueue{
+interface AddToQueue {
   type: ActionType.ADD_TO_QUEUE,
   payload: swSong
 }
-interface getLibrary{
+interface getLibrary {
   type: ActionType.GET_LIBRARY,
   payload: LibraryArtist
 }
-interface get_PlaylistForId{
-  type:ActionType.GET_PlaylistForId,
-  payload:any
+interface get_PlaylistForId {
+  type: ActionType.GET_PlaylistForId,
+  payload: any
 }
-interface AddToPlaylist{
+interface AddToPlaylist {
   type: ActionType.ADD_TO_PLAYLIST,
   payload: any
 }
-interface NewPlaylist{
+interface NewPlaylist {
   type: ActionType.NEW_PLAYLIST,
   payload: any
 }
-interface GetTop{
+interface GetTop {
   type: ActionType.GET_TOP,
   payload: any
 }
-interface LikeSong{
+interface LikeSong {
   type: ActionType.LIKE_SONG,
   payload: any
 }
-interface SetQuery{
+interface SetQuery {
   type: ActionType.SET_QUERY,
   payload: string
+}
+interface getUser {
+  type: ActionType.GET_USER,
+  payload: any
 }

@@ -15,6 +15,7 @@ interface State {
   adminOption: types.AdminOption;
   genre: any;
   top: any;
+  user: types.User;
 }
 
 const initialState: State = {
@@ -40,6 +41,13 @@ const initialState: State = {
   adminOption: { home: true, user: false },
   genre: [],
   top: [],
+  user: {
+    username: '',
+    image: '',
+    rol: '',
+    favorites: [],
+    playlist: [],
+  }
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
@@ -144,7 +152,16 @@ const Reducer = (state: any = initialState, action: Actions) => {
     case ActionType.LIKE_SONG:
       return {
         ...state,
-      };
+        user: {
+          ...state.user,
+          favorite: action.payload
+        },
+      }
+    case ActionType.GET_USER:
+      return {
+        ...state,
+        user: action.payload,
+      }
     case ActionType.SET_QUERY:
       return {
         ...state,
