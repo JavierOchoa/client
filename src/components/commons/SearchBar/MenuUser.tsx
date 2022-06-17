@@ -32,10 +32,10 @@ const Menu: React.FunctionComponent<props> = (props) => {
 
     const { user, isAuthenticated, isLoading, logout } = useAuth0();
     // const newUser: any = user
-    console.log('user', user)
-    console.log('autenti', isAuthenticated)
-    console.log('loding', isLoading)
-    console.log(user?.picture)
+    // console.log('user', user)
+    // console.log('autenti', isAuthenticated)
+    // console.log('loding', isLoading)
+    // console.log(user?.picture)
     // useEffect(() => {
     //   const token = localStorage.getItem('sw-token') || '{}';
     //   if (token !== '{}') {

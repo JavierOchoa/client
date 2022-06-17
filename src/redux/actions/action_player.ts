@@ -74,7 +74,7 @@ export const addToQueue = (data: swSong) => {
 };
 export const addToPlaylist = (playlistId: string, songId: string) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.post('http://143.198.158.238:3001/playlist/add', {playlistId: playlistId, songId: songId})
+    axios.post('http://localhost:3001/add', {playlistId: playlistId, songId: songId})
     .then(response => dispatch({
       type: ActionType.ADD_TO_PLAYLIST,
       payload: response.data
@@ -101,7 +101,7 @@ export const cleanGenre = ()=>{
 }
 export const getAlbumPlaylist = (id:any, type:string)=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.get(`http://143.198.158.238:3001/${type}/${id}`)
+    axios.get(`http://localhost:3001/${type}/${id}`)
     .then(response => 
       dispatch({
         type: ActionType.GET_ALBUM_PLAYLIST,
@@ -120,9 +120,9 @@ export const getTop = () => {
     );
   };
 };
-export const likeSong = (songId: string, userId: string) => {
+export const likeSong = (songId: string, email: any) => {
   return(dispatch: Dispatch<Actions>) => {
-    axios.post(`http://143.198.158.238:3001/favorite/add/${songId}`, {userId: userId})
+    axios.post(`http://localhost:3001/favorite/add/${songId}`, {email: email})
     .then(response => dispatch({
       type: ActionType.LIKE_SONG,
       payload: response.data

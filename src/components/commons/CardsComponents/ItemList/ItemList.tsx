@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import s from './ItemList.module.css'
 import likefull from '../../../../assets/likefull.png'
 import time from '../../../../assets/time.png'
@@ -6,9 +6,11 @@ import DropDownButton from '../../DropDownButton/DropDownButton'
 import { Link } from 'react-router-dom'
 import play from '../../../../assets/play.png'
 import * as actionCreator from '../../../../redux/actions/action_player'
+import * as actionCreatorUser from '../../../../redux/actions/action_user'
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { useAuth0 } from '@auth0/auth0-react'
+import { useSelector } from 'react-redux'
 
 // interface Item {
 //     position: number;
@@ -23,7 +25,6 @@ interface myProps {
 }
 
 const ItemList: React.FC<myProps> = (props: myProps) => {
-  console.log(props)
   const formatDuration = (duration: string): string => {
     let num = parseInt(duration);
     let minutes: number = Math.floor(num / 60)
@@ -38,6 +39,25 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
   const userId: string | undefined = user?.sub?.slice(6);
   let tipo = props.item.type
 
+  const state= useSelector((state:any)=>state)
+
+  const [estado,setEstado]=useState<any>()
+  const { getLibrary } = bindActionCreators(actionCreatorUser, dispatch);
+
+
+  useEffect(()=>{
+    getLibrary(user?.email)
+    
+
+
+    state.library_artist.list.liked_songs && setEstado(state.library_artist.list.liked_songs.map((e:any)=> e.dz_Id ))
+  },[])
+
+
+
+
+
+
   switch (tipo) {
     case "track":
       return (
@@ -51,14 +71,14 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
               </div>
               <div>
                 <div onClick={() => playSong(props.item)} className={s.songName}>{props.item.name}</div>
-                <span className={s.spanArtistName}>{props.item.artists[0].name}</span> 
+                <span className={s.spanArtistName}>{props.item.name}</span> 
               </div>
             </div>
           {/* </Link> */}
 
 
           <div className={s.controllerContainer}>
-            {userId && <button className={s.likeBtn} onClick={() => likeSong(props.item.id, userId)}><img className={s.likeImg} src={likefull} alt="" /></button>}
+            {userId && <button className={s.likeBtn} onClick={() => likeSong(props.item.dz_Id, user?.email)}><p className={estado?.includes(props.item.dz_Id) ? s.likeImgInclude:s.likeImg}     >♥</p></button>}
             <div>
               <DropDownButton item={props.item}/>
             </div>

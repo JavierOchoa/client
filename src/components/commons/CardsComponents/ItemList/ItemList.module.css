@@ -103,14 +103,30 @@
 
 
 
-.likeImg {
-    width: 25px;
-}
-
-.likeImg:hover{
-    filter: opacity(0.4) drop-shadow(0 0 0 red); 
-    cursor: pointer;
-}
+    .likeImg {
+        width: 30px;
+    
+        font-size: 3em;
+        color: black;
+    }
+    
+    
+    .likeImgInclude {
+        width: 30px;
+        font-size: 3em;
+        color: rgb(223, 19, 19);
+      
+    }
+    
+    
+    .likeImg:hover{
+        width: 30px;
+        font-size: 3em;
+    
+    
+        color: rgb(174, 51, 51);
+    }
+    
 
 .likeImgAlt{
     filter: opacity(0.4) drop-shadow(0 0 0 red); 
