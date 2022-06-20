@@ -34,7 +34,7 @@ export const getChart = () => {
 
 export const getLastSongs = () => {
   return (dispatch: Dispatch<any>) => {
-    axios.get("http://143.198.158.238:3001/top").then((response) =>
+    axios.get("http://localhost:3001/top").then((response) =>
       dispatch({
         type: ActionType.GET_LAST_SONGS,
         payload: response.data.reverse(),
@@ -46,7 +46,7 @@ export const getLastSongs = () => {
 export const searchAll = (input: string) => {
   //hasta que no halla back el axios queda comentado
   return (dispatch: Dispatch<Actions>) => {
-    axios.get(`http://143.198.158.238:3001/search?all=${input}`)
+    axios.get(`http://localhost:3001/search?all=${input}`)
       .then((response) =>
         dispatch({
           type: ActionType.SEARCH_ALL,
@@ -83,7 +83,7 @@ export const deleteFromQueue = (id: string) => {
       payload: id,
     });
   };
-} 
+}
 export const sortQueue = (data: swSong[]) => {
   return (dispatch: Dispatch<Actions>) => {
     dispatch({
@@ -121,11 +121,11 @@ export const cleanGenre = () => {
 }
 export const getAlbumPlaylist = (id: any, type: string) => {
   if (id === 'clean') {
-    return(dispatch: Dispatch<Actions>) => {
-        dispatch({
-          type: ActionType.CLEAN_ALBUM_PLAYLIST
-        })
-      }
+    return (dispatch: Dispatch<Actions>) => {
+      dispatch({
+        type: ActionType.CLEAN_ALBUM_PLAYLIST
+      })
+    }
   } else {
     return (dispatch: Dispatch<any>) => {
       axios.get(`http://143.198.158.238:3001/${type}/${id}`)
@@ -140,7 +140,7 @@ export const getAlbumPlaylist = (id: any, type: string) => {
 }
 export const getTop = () => {
   return (dispatch: Dispatch<any>) => {
-    axios.get("http://143.198.158.238:3001/top").then((response) =>
+    axios.get("http://localhost:3001/top").then((response) =>
       dispatch({
         type: ActionType.GET_TOP,
         payload: response.data,
@@ -151,7 +151,7 @@ export const getTop = () => {
 
 export const likeSong = (songId: string, email: string) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.post(`http://143.198.158.238:3001/favorite/add/${songId}`, { email: email })
+    axios.post(`http://localhost:3001/favorite/add/${songId}`, { email: email })
       .then(response => dispatch({
         type: ActionType.LIKE_SONG,
         payload: response.data
@@ -161,7 +161,7 @@ export const likeSong = (songId: string, email: string) => {
 
 export const dislikeSong = (songId: string, email: string) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.post(`http://143.198.158.238:3001/favorite/remove/${songId}`, { email: email })
+    axios.post(`http://localhost:3001/favorite/remove/${songId}`, { email: email })
       .then(response => dispatch({
         type: ActionType.DISLIKE_SONG,
         payload: response.data
